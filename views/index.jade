@@ -1,0 +1,76 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(name="headerGen", id="headerGen", onsubmit="generateHeader()")
+    table
+      tr
+        td
+          table
+            tr
+              td
+                p First Name
+              td
+                input(id="firstName" name="firstName")
+              tr
+                td
+                  p Last name
+                td
+                  input(id="lastName" name="lastName")
+              tr
+                td
+                  p Title
+                td
+                  input(id="jobTitle" name="jobTitle")
+              tr
+                td
+                  p Slogan
+                td
+                  input(id="personalSlogan" name="personalSlogan")
+              tr
+                td
+                  p Phone Number
+                td
+                  input(id="phoneNumber" name="phoneNumber")
+        td
+          table
+            tr
+              td
+                p Website Address
+              td
+                input(id="webAddr" name="webAddr")
+            tr
+              td
+                p Facebook Address
+              td
+                input(id="fbAddr" name="fbAddr")
+            tr
+              td
+                p Twitter Address
+              td
+                input(id="twitterAddr" name="twitterAddr")
+            tr
+              td
+                p Linkedin Address
+              td
+                input(id="liAddr" name="liAddr")
+            tr
+              td
+                p Youtube Address
+              td
+                input(id="ytAddr" name="ytAddr")
+      tr
+        td
+          p Headshot Photo
+        td
+          input(type="file" id="headPhoto" name="headPhoto")
+      tr
+        td
+          p Company Logo
+        td
+          input(type="file" id="coLogo" name="coLogo")
+      tr
+        td
+          input(type="submit", value="Generate Header")
+  <canvas id="header" width="580px" height="387px"></canvas>
