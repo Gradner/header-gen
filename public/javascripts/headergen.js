@@ -1,6 +1,11 @@
+//initalize canvas and customerdata object
+
 var customerData = {};
 var canvas = document.getElementById('header');
 var header = canvas.getContext("2d");
+
+//initialize images and assign those that are pre-set rather than customer selected
+
 backgroundImage = new Image();
 customerData.headShot = new Image();
 customerData.companyLogo = new Image();
@@ -12,6 +17,10 @@ customerData.liLogo = new Image();
 customerData.liLogo.src = 'social_in_white.svg';
 customerData.ytLogo = new Image();
 customerData.ytLogo.src = 'social_yt_white.svg';
+
+// Main Header Generator function that is called when the form is submitted.
+// Serializes the customer input and populates the customer data object, handles x axis // offsets added for social media buttons and then fires the script that populates the
+// canvas element.
 
 function generateHeader(){
   event.preventDefault();
@@ -35,6 +44,11 @@ function generateHeader(){
   populateCanvas();
 };
 
+// Set of event handlers that watch for the customer to select a photo from their
+// computer. Since we don't want to upload the images to a server, just use them to
+// draw on the canvas element, we need to generate a URL that our canvas can use to
+// find the image.
+
 var loadHeadshot = function(event){
   var headshotPreview = document.getElementById('headshotPreview');
   headshotPreview.src = URL.createObjectURL(event.target.files[0]);
@@ -46,6 +60,11 @@ var loadLogo = function(event){
   logoPreview.src = URL.createObjectURL(event.target.files[0]);
   customerData.companyLogo.src = logoPreview.src;
 }
+
+// The following 2 functions activate the "DDSlick" dropdown plugin on the page.
+// This is a great jquery plugin for dropdown menus with graphics!
+//
+// More info available at http://designwithpc.com/Plugins/ddSlick
 
 $("#bgDrop").ddslick({
   data:backgrounds,
@@ -69,6 +88,18 @@ $("#clrDrop").ddslick({
     customerData.clrScheme = selectedData.selectedData;
   }
 })
+
+// The following two functions take the max width and max height of an image that is
+// uploaded and generate a ratio to use when sizing the image on the canvas.
+//
+// They compare the uploaded images to a preset maxwidth and maxheight, generate a
+// ratio for both the width and height and then select the smaller of the two.
+//
+// We select the smaller of the two, because we need to ensure that the image is
+// constained to both of our proportions.
+//
+// Yes, I know that I could have used one function. No, I don't feel like refactoring
+// them considering the project is, unto itself, a bit of a singleton.
 
 function scalePhoto(){
   var ratio = 1;
@@ -105,6 +136,19 @@ function scaleLogo(){
   }
   return ratio;
 }
+
+// This is the meat and potatoes of the project. The following function populates
+// the canvas with our customer data. It could probably be re-factored, however it
+// is extremely important that the data be written to the canvas in a specific order
+// since foreground elements must be drawn after background elements.
+//
+// As a result, I've opted to keep the function as a long in-line set of instructions.
+// This way, the order of individual instructions can be shifted around with relative
+// ease.
+//
+// If the project has additional variables added, it may be worthwhile to factor it out
+// but for now it just seems needless. We know exactly what data we're expecting, so
+// there really is no need to account for other possibilities.
 
 function populateCanvas(){
   header.drawImage(backgroundImage,0,-35,580,240);
