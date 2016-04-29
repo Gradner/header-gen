@@ -1,10 +1,8 @@
 function generateHeader(){
   event.preventDefault();
-  var inputs = $('#headerGen :input');
-  var customerData = $.map(inputs, function(n, i){
-    var o = {};
-    o[n.name] = $(n).val();
-    return o;
+  var customerData = {};
+  $("#headerGen").find(":input").each(function(){
+    customerData[this.name] = $(this).val();
   });
-  console.log(customerData);                      
+  console.log(customerData);
 }
