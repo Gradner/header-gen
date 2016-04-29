@@ -1,104 +1,98 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  form(name="headerGen", id="headerGen", onsubmit="generateHeader()", style="font-family: LatoWebSemibold;")
-    table
-      tr
-        td
-          table
-            tr
-              td
-                p First Name
-              td
-                input(id="firstName" name="firstName")
-            tr
-              td
-                p Last name
-              td
-                input(id="lastName" name="lastName")
-            tr
-              td
-                p Title
-              td
-                input(id="jobTitle" name="jobTitle")
-            tr
-              td
-                p Slogan
-              td
-                input(id="personalSlogan" name="personalSlogan")
-            tr
-              td
-                p Phone Number
-              td
-                input(id="phoneNumber" name="phoneNumber")
-        td
-          table
-            tr
-              td
-                p Website Address
-              td
-                input(id="webAddr" name="webAddr")
-            tr
-              td
-                p Facebook Address
-              td
-                input(id="fbAddr" name="fbAddr")
-            tr
-              td
-                p Twitter Address
-              td
-                input(id="twitterAddr" name="twitterAddr")
-            tr
-              td
-                p Linkedin Address
-              td
-                input(id="liAddr" name="liAddr")
-            tr
-              td
-                p Youtube Address
-              td
-                input(id="ytAddr" name="ytAddr")
-      tr
-        td
-          p Headshot Photo
-        td
-          input(type="file" accept="image/*" id="headPhoto" name="headPhoto" onchange="loadHeadshot(event)")
-      tr
-        td
-          p Headshot Preview:
-        td
-          img#headshotPreview(style="max-width: 100px; max-height: 150px;")
-      tr
-        td
-          p Company Logo
-        td
-          input(type="file" accept="image/*" id="coLogo" name="coLogo" onchange="loadLogo(event)")
-      tr
-        td
-          p Logo Preview:
-        td
-          img#logoPreview(style="max-width: 200px; max-height: 150px;")
-      tr
-        td
-          p Background Image
-        td
-          div#bgDrop
-      tr
-        td
-          p Color Scheme
-        td
-          div#clrDrop
-      tr
-        td
-          input(type="button", id="submitButton", value="Generate Header", onClick="generateHeader()")
-  <canvas id="header" width="580px" height="387px"></canvas>
-  div(style="font-family: LatoWebMedium")
-    div(style="font-family: LatoWebSemibold")
-      div(style="font-family: LatoWebThin")
-        div(style="font-family: LatoWeb")
-          div(style="font-family: LatoWebLight")
-            div(style="font-family: LatoWebHeavy")
-              div(style="font-family: LatoWebHairline")
-                div(style="font-family: LatoWebBold")
+  div#bigolcontainer
+    h1(style="font-family: LatoWebBold; text-align: center;")= title
+    p(style="font-family: LatoWebSemibold; text-align: center;") Welcome to #{title}! Please fill in the fields below<br> then click "Generate Header" to create your own custom header!
+    form(name="headerGen", id="headerGen", onsubmit="generateHeader()", style="font-family: LatoWeb;")
+      table(align="center" cellspacing=20)
+        tr
+          td
+            table
+              tr
+                td
+                  p First Name
+                td
+                  input(type="text" id="firstName" name="firstName")
+              tr
+                td
+                  p Last name
+                td
+                  input(type="text" id="lastName" name="lastName")
+              tr
+                td
+                  p Title
+                td
+                  input(type="text" id="jobTitle" name="jobTitle")
+              tr
+                td
+                  p Slogan
+                td
+                  input(type="text" id="personalSlogan" name="personalSlogan")
+              tr
+                td
+                  p Phone Number
+                td
+                  input(type="text" id="phoneNumber" name="phoneNumber")
+          td
+            table
+              tr
+                td
+                  p Website Address
+                td
+                  input(type="text" id="webAddr" name="webAddr")
+              tr
+                td
+                  p Facebook Address
+                td
+                  input(type="text" id="fbAddr" name="fbAddr")
+              tr
+                td
+                  p Twitter Address
+                td
+                  input(type="text" id="twitterAddr" name="twitterAddr")
+              tr
+                td
+                  p Linkedin Address
+                td
+                  input(type="text" id="liAddr" name="liAddr")
+              tr
+                td
+                  p Youtube Address
+                td
+                  input(type="text" id="ytAddr" name="ytAddr")
+        tr
+          td(align="right")
+            p Headshot Photo
+          td
+            input(type="file" accept="image/*" id="headPhoto" name="headPhoto" onchange="loadHeadshot(event)")
+        tr
+          td(align="right")
+            p Headshot Preview:
+          td
+            img#headshotPreview(style="max-width: 100px; max-height: 150px;")
+        tr
+          td(align="right")
+            p Company Logo
+          td
+            input(type="file" accept="image/*" id="coLogo" name="coLogo" onchange="loadLogo(event)")
+        tr
+          td(align="right")
+            p Logo Preview:
+          td
+            img#logoPreview(style="max-width: 200px; max-height: 150px;")
+        tr
+          td(align="right")
+            p Background Image
+          td
+            div#bgDrop
+        tr
+          td(align="right")
+            p Color Scheme
+          td
+            div#clrDrop
+        tr
+          td
+            input(type="button", id="submitButton", value="Generate Header", onClick="generateHeader()")
+    div#canvasContainer
+      <canvas id="header" width="580px" height="387px" align="center">Your browser does not support Cavas. Please try again using the latest version of Google Chrome or Firefox.</canvas>
