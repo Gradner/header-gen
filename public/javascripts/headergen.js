@@ -1,7 +1,6 @@
 var customerData = {};
 var canvas = document.getElementById('header');
 var header = canvas.getContext("2d");
-var canvasPopulated = false;
 backgroundImage = new Image();
 customerData.headShot = new Image();
 customerData.companyLogo = new Image();
