@@ -4,12 +4,33 @@ var header = canvas.getContext("2d");
 backgroundImage = new Image();
 customerData.headShot = new Image();
 customerData.companyLogo = new Image();
+customerData.fbLogo = new Image();
+customerData.fbLogo.src = 'social_fb_white.svg';
+customerData.twLogo = new Image();
+customerData.twLogo.src = 'social_tw_white.svg';
+customerData.liLogo = new Image();
+customerData.liLogo.src = 'social_in_white.svg';
+customerData.ytLogo = new Image();
+customerData.ytLogo.src = 'social_yt_white.svg';
 
 function generateHeader(){
   event.preventDefault();
   $("#headerGen").find(":input").each(function(){
     customerData[this.name] = $(this).val();
   });
+  customerData.phoneOffsetX = 0;
+  if(customerData.fbAddr != ""){
+    customerData.phoneOffsetX += 24;
+  }
+  if(customerData.twitterAddr != ""){
+    customerData.phoneOffsetX += 24;
+  }
+  if(customerData.liAddr != ""){
+    customerData.phoneOffsetX += 24;
+  }
+  if(customerData.ytAddr != ""){
+    customerData.phoneOffsetX += 24;
+  }
   console.log(customerData);
   populateCanvas();
 };
@@ -82,7 +103,6 @@ function scaleLogo(){
   } else {
     ratio = ratio1;
   }
-  console.log(ratio);
   return ratio;
 }
 
@@ -108,7 +128,36 @@ function populateCanvas(){
   header.fillText(customerData.webAddr, 32, 338);
   header.font="20px LatoWebSemibold";
   header.fillStyle = "#ffffff";
-  header.fillText(customerData.phoneNumber, 425, 205);
+  header.fillText(customerData.phoneNumber, 425 - (customerData.phoneOffsetX + ((customerData.phoneNumber.length - 14) * 10)), 205);
+  header.fillStyle = customerData.clrScheme.color1;
+  if(customerData.fbAddr != ""){
+    header.beginPath();
+    header.arc(580 - customerData.phoneOffsetX, 198, 9, 0, 2 * Math.PI);
+    header.fill();
+    header.drawImage(customerData.fbLogo, 576 - customerData.phoneOffsetX, 192, 8, 12);
+    customerData.phoneOffsetX -= 24
+  }
+  if(customerData.twitterAddr != ""){
+    header.beginPath();
+    header.arc(580 - customerData.phoneOffsetX, 198, 9, 0, 2 * Math.PI);
+    header.fill();
+    header.drawImage(customerData.twLogo, 574 - customerData.phoneOffsetX, 192, 12, 12);
+    customerData.phoneOffsetX -= 24
+  }
+  if(customerData.liAddr != ""){
+    header.beginPath();
+    header.arc(580 - customerData.phoneOffsetX, 198, 9, 0, 2 * Math.PI);
+    header.fill();
+    header.drawImage(customerData.liLogo, 574 - customerData.phoneOffsetX, 192, 12, 12);
+    customerData.phoneOffsetX -= 24
+  }
+  if(customerData.ytAddr != ""){
+    header.beginPath();
+    header.arc(580 - customerData.phoneOffsetX, 198, 9, 0, 2 * Math.PI);
+    header.fill();
+    header.drawImage(customerData.ytLogo, 574 - customerData.phoneOffsetX, 192, 12, 12);
+    customerData.phoneOffsetX -= 24
+  }
   var logoRatio = scaleLogo();
   header.drawImage(customerData.companyLogo, 570 - (customerData.companyLogo.width * logoRatio), 215 + ((170 - (customerData.companyLogo.height * logoRatio)) / 2), (customerData.companyLogo.width * logoRatio), (customerData.companyLogo.height * logoRatio));
   header.shadowColor = "#404040"
