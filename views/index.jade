@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(name="headerGen", id="headerGen", onsubmit="generateHeader()")
+  form(name="headerGen", id="headerGen", onsubmit="generateHeader()", style="font-family: LatoWebSemibold;")
     table
       tr
         td
@@ -13,26 +13,26 @@ block content
                 p First Name
               td
                 input(id="firstName" name="firstName")
-              tr
-                td
-                  p Last name
-                td
-                  input(id="lastName" name="lastName")
-              tr
-                td
-                  p Title
-                td
-                  input(id="jobTitle" name="jobTitle")
-              tr
-                td
-                  p Slogan
-                td
-                  input(id="personalSlogan" name="personalSlogan")
-              tr
-                td
-                  p Phone Number
-                td
-                  input(id="phoneNumber" name="phoneNumber")
+            tr
+              td
+                p Last name
+              td
+                input(id="lastName" name="lastName")
+            tr
+              td
+                p Title
+              td
+                input(id="jobTitle" name="jobTitle")
+            tr
+              td
+                p Slogan
+              td
+                input(id="personalSlogan" name="personalSlogan")
+            tr
+              td
+                p Phone Number
+              td
+                input(id="phoneNumber" name="phoneNumber")
         td
           table
             tr
@@ -64,13 +64,41 @@ block content
         td
           p Headshot Photo
         td
-          input(type="file" accept="image/*" id="headPhoto" name="headPhoto")
+          input(type="file" accept="image/*" id="headPhoto" name="headPhoto" onchange="loadHeadshot(event)")
+      tr
+        td
+          p Headshot Preview:
+        td
+          img#headshotPreview(style="max-width: 100px; max-height: 150px;")
       tr
         td
           p Company Logo
         td
-          input(type="file" accept="image/*" id="coLogo" name="coLogo")
+          input(type="file" accept="image/*" id="coLogo" name="coLogo" onchange="loadLogo(event)")
       tr
         td
-          input(type="submit", value="Generate Header")
+          p Logo Preview:
+        td
+          img#logoPreview(style="max-width: 200px; max-height: 150px;")
+      tr
+        td
+          p Background Image
+        td
+          div#bgDrop
+      tr
+        td
+          p Color Scheme
+        td
+          div#clrDrop
+      tr
+        td
+          input(type="button", id="submitButton", value="Generate Header", onClick="generateHeader()")
   <canvas id="header" width="580px" height="387px"></canvas>
+  div(style="font-family: LatoWebMedium")
+    div(style="font-family: LatoWebSemibold")
+      div(style="font-family: LatoWebThin")
+        div(style="font-family: LatoWeb")
+          div(style="font-family: LatoWebLight")
+            div(style="font-family: LatoWebHeavy")
+              div(style="font-family: LatoWebHairline")
+                div(style="font-family: LatoWebBold")
