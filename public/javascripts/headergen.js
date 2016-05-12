@@ -172,7 +172,7 @@ function populateCanvas(){
   header.fillText(customerData.webAddr, 32, 338);
   header.font="20px LatoWebSemibold";
   header.fillStyle = "#ffffff";
-  header.fillText(customerData.phoneNumber, 425 - (customerData.phoneOffsetX + ((customerData.phoneNumber.length - 14) * 10)), 205);
+  header.fillText(customerData.phoneNumber, 550 - (customerData.phoneOffsetX + ((header.measureText(customerData.phoneNumber).width - 12))), 205);
   header.fillStyle = customerData.clrScheme.color1;
   if(customerData.fbAddr != ""){
     header.beginPath();
@@ -204,10 +204,10 @@ function populateCanvas(){
   }
   var logoRatio = scaleLogo();
   header.drawImage(customerData.companyLogo, 570 - (customerData.companyLogo.width * logoRatio), 215 + ((170 - (customerData.companyLogo.height * logoRatio)) / 2), (customerData.companyLogo.width * logoRatio), (customerData.companyLogo.height * logoRatio));
-  header.shadowColor = "#404040"
-  header.shadowBlur = 2;
-  header.shadowOffsetX = 2;
-  header.shadowOffsetY = 2;
+  header.shadowColor = "rgba(64,64,64,0.9)"
+  header.shadowBlur = 4;
+  header.shadowOffsetX = 4;
+  header.shadowOffsetY = 4;
   var headshotRatio = scalePhoto();
   header.drawImage(customerData.headShot, 32, 235 - (customerData.headShot.height * headshotRatio), (customerData.headShot.width * headshotRatio), (customerData.headShot.height * headshotRatio));
   header.shadowColor = "#fff"
