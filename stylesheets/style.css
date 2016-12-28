@@ -1,0 +1,54 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: dimgray;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#bigolcontainer {
+  width: 680px;
+  border-radius: 5px;
+  margin: auto;
+  background-color: white;
+  padding: 10px;
+}
+
+#canvasContainer {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+}
+
+canvas {
+  display: none;
+  margin: auto;
+}
+
+.warningText {
+  color: red;
+  font-size: 12px;
+}
+
+.textInputTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.textInput {
+  padding: 3px;
+  border-radius: 2px;
+  border: 1px solid #404040;
+  width: 80%;
+}
+
+.leftColText {
+  width: 30%;
+  height: 35px;
+  text-align: left;
+}
+
+.headerInstructions {
+  display: none;
+}

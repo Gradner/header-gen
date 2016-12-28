@@ -1,0 +1,194 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <title>Email Header Generator</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/latofonts.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="./javascripts/bgimg.js"></script>
+    <script src="./javascripts/ddslick.js"></script>
+  </head>
+  <body>
+    <div id="bigolcontainer">
+      <h1 style="font-family: LatoWebBold; text-align: center;">Custom Email Header Generator</h1>
+      <p style="font-family: LatoWebSemibold; text-align: center;">Welcome to the IXACT Contact Custom Email Header Generator!<br>Please fill in your information and make the selections below, then click the<br>Generate Header button to generate your own custom header.</p>
+      <form name="headerGen" id="headerGen" onsubmit="generateHeader()" style="font-family: LatoWeb;">
+        <table width="650px" align=center>
+          <tr>
+            <td colspan="2">
+              <span class="warningText">* Required Field</span>
+              <table class="textInputTable" align="center">
+                <tr>
+                  <td class="leftColText"><p>First Name <span class="warningText">*</span></p></td>
+                  <td class="rightColText"><input class="textInput" type="text" id="firstName" name="firstName" maxlength="25"></td>
+                </tr>
+                <tr>
+                  <td class="leftColText"><p>Last name <span class="warningText">*</span></p></td>
+                  <td class="rightColText"><input class="textInput" type="text" id="lastName" name="lastName" maxlength="25"></td>
+                </tr>
+                <tr>
+                  <td class="leftColText"><p>Title (e.g. Sales Representative)</p></td>
+                  <td class="rightColText"><input class="textInput" type="text" id="jobTitle" name="jobTitle" maxlength="50"></td>
+                </tr>
+                <tr>
+                  <td class="leftColText"><p>Phone Number</p></td>
+                  <td class="rightColText"><input class="textInput" type="text" id="phoneNumber" name="phoneNumber" maxlength="20"></td>
+                </tr>
+                <tr>
+                   <td class="leftColText"><p>Website Address</p></td>
+                   <td class="rightColText"><input class="textInput" type="text" id="webAddr" name="webAddr" maxlength="40"></td>
+                </tr>
+                <tr>
+                   <td class="leftColText"><p>Personal Slogan</p></td>
+                   <td class="rightColText"><input class="textInput" type="text" id="personalSlogan" name="personalSlogan" maxlength="70"></td>
+                </tr>
+                <tr>
+                  <td class="leftColText"><p>Banner Quote</p></td>
+                  <td class="rightColText"><input class="textInput" type="text" id="bannerQuote" name="bannerQuote" maxlength="50"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <br><br>
+              <table text-align="center" width="100%">
+                <tr>
+                  <td colspan="7"><b>Social Media Links</b> (You can select up to a maximum of 4 links)<br><br></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">
+                    Facebook
+                  </td>
+                  <td style="text-align:center;">
+                    Twitter
+                  </td>
+                  <td style="text-align:center;">
+                    Linkedin
+                  </td>
+                  <td style="text-align:center;">
+                    Youtube
+                  </td>
+                  <td style="text-align:center;">
+                    Instagram
+                  </td>
+                  <td style="text-align:center;">
+                    Google+
+                  </td>
+                  <td style="text-align:center;">
+                    Pinterest
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;"><input type="checkbox" id="facebookCheck" name="facebookCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="twitterCheck" name="twitterCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="linkCheck" name="linkCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="youtubeCheck" name="youtubeCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="instaCheck" name="instaCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="googleCheck" name="googleCheck" value="0"></td>
+                  <td style="text-align:center;"><input type="checkbox" id="pinCheck" name="pinCheck" value="0"></td>
+                </tr>
+              </table>
+              <br><br>
+            </td>
+          </tr>
+          <tr height="170px">
+            <td style="vertical-align:top;" colspan="2">
+              <table>
+                <tr>
+                  <td align="right">
+                    <p>Agent Photo <span class="warningText">*</span></p>
+                  </td>
+                  <td><input type="file" accept="image/*" id="headPhoto" name="headPhoto" onchange="loadImg(event, headshotPreview, customerData.headShot)"></td>
+                </tr>
+                <tr>
+                  <td colspan=2><img id="headshotPreview" style="max-width: 100px; max-height: 150px;"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr height="170px">
+            <td style="vertical-align:top;" colspan="2">
+              <table>
+                <tr>
+                  <td align="right">
+                    <p>Company Logo <span class="warningText">*</span></p>
+                  </td>
+                  <td><input type="file" accept="image/*" id="coLogo" name="coLogo" onchange="loadImg(event, logoPreview, customerData.companyLogo)"></td>
+                </tr>
+                <tr>
+                  <td colspan=2><img id="logoPreview" style="max-width: 200px; max-height: 150px;"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Background Image <span class="warningText">*</span></span>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align=left>
+              <span>Select Background from List</span>
+              <input type="radio" name="backgroundType" id="backgroundType" value="list" checked>
+            </td>
+            <td align=left>
+              <span>Upload Custom Background</span><input type="radio" name="backgroundType" id="backgroundType" value="custom">
+            </td>
+          </tr>
+          <tr id="backgroundList" height="200px">
+            <td align="left" valign=top colspan="2">
+              <div id="bgDrop"></div>
+            </td>
+          </tr>
+          <tr id="backgroundUpload" style="display:none;" height="200px">
+            <td colspan="2" valign=top>
+              <table align="left">
+                <tr>
+                  <td align="left">
+                    <p>Custom Background</p>
+                  </td>
+                  <td><input type="file" accept="image/*" id="customBg" name="customBg" onchange="loadImg(event, customBgPreview, customerData.customBgImg)"></td>
+                </tr>
+                <tr>
+                  <td align="right" colspan="2">
+                  <img id="customBgPreview" style="max-width: 580px;"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2>
+              <p>Color Scheme <span class="warningText">*</span></p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2>
+              <div id="clrDrop"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2 align=center><br><br><input type="button" id="submitButton" value="Generate Header" onClick="generateHeader(event)"></td>
+          </tr>
+        </table>
+      </form>
+      <div id="canvasContainer">
+        <canvas id="header" width="580px" height="400px" align="center">Your browser does not support Cavas. Please try again using the latest version of Google Chrome or Firefox.</canvas>
+        <img id="stdHeaderPreload">
+      </div>
+      <div class="headerInstructions">
+        <p>To use your Email Header in your IXACT Contact CRM, follow these steps:</p>
+        <ol style="line-height: 22px;">
+          <li>Save the picture file to your computer by right-clicking the image above and selecting <span class="bold-text">Save picture/image as…</span></li>
+          <li>Sign in to your IXACT Contact CRM, click <b>User Profile</b><img src="/images/user_profile.png" height=19 width=19> in the top navigation bar, and click the <b>Email Header</b> tab.</li>
+          <li>For the Header Type, select <b>Custom Header.</b></li>
+          <li>Click the <b>Image Manager</b> <img src="/images/image_manager.png" height=19 width=21> icon in the editor toolbar, click <img src="/images/upload_icon.png" height=19 width=62> to select the picture file from your computer, and click the <img src="/images/upload_button.png" height=19 width=42> button.</li>
+          <li>Click the <img src="/images/insert_button.png" height=19 width=49> button.</li>
+          <li>Click the <img src="/images/save_button.png" height=19 width=55> button at the top of the page.</li>
+        </ol>
+        <p>If you would like assistance getting your Email Header into your CRM, or you would like help hyperlinking your social media buttons or your website address, please call customer support at 1-866-265-6990 between 9:00AM and 8:00PM eastern time.</p>
+      </div>
+    </div>
+    <script src="./javascripts/headergen.js"></script>
+  </body>
+</html>
