@@ -14,19 +14,19 @@ customerData.headShot = new Image();
 customerData.companyLogo = new Image();
 customerData.customBgImg = new Image();
 customerData.fbLogo = new Image();
-customerData.fbLogo.src = './images/social_fb_white.svg';
+customerData.fbLogo.src = './images/social_fb_white.png';
 customerData.twLogo = new Image();
-customerData.twLogo.src = './images/social_tw_white.svg';
+customerData.twLogo.src = './images/social_tw_white.png';
 customerData.liLogo = new Image();
-customerData.liLogo.src = './images/social_in_white.svg';
+customerData.liLogo.src = './images/social_in_white.png';
 customerData.ytLogo = new Image();
-customerData.ytLogo.src = './images/social_yt_white.svg';
+customerData.ytLogo.src = './images/social_yt_white.png';
 customerData.igmLogo = new Image();
-customerData.igmLogo.src = './images/social_igm_white.svg';
+customerData.igmLogo.src = './images/social_igm_white.png';
 customerData.gglLogo = new Image();
-customerData.gglLogo.src = './images/social_ggl_white.svg';
+customerData.gglLogo.src = './images/social_ggl_white.png';
 customerData.pinLogo = new Image();
-customerData.pinLogo.src = './images/social_pin_white.svg';
+customerData.pinLogo.src = './images/social_pin_white.png';
 
 // Prevent the user from selecting more than 4 social media options (the current maximum)
 
